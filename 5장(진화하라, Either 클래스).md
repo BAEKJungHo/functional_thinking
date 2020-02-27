@@ -98,3 +98,21 @@ public static Either<Exception, Integer> parseNumber(String s) {
     return Either.right(new RomanNumeral(s).toInt());
 }
 ```
+
+위 예제의 Either는 왼쪽은 Exception 오른쪽은 Integer 타입을 받는다.
+
+## Option 클래스
+
+Either는 두 부분을 가진 값을 간편하게 리턴할 수 있는 개념이다. 이것은 트리 모양 자료구조와 같은 일반적인 자료구조를 만드는데 유용하다.
+Either와 유사한 `Option` 클래스가 있는데 이것은 적당한 값이 존재하지 않을 경우를 의미하는 none, 성공적인 리턴을 의미하는 some을 사용하여
+예외 조건을 더 쉽게 표현한다.
+
+```java
+public static Option<Double> divide(double x, double y) {
+  if(y == 0) return Option.none();
+  return Option.some(x/y);
+}
+```
+
+Either는 어떤 값이든 저장할 수 있는 반면, Option은 주로 성공과 실패의 값을 저장하는 데 쓰인다.
+
